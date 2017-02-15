@@ -1,0 +1,11 @@
+{
+  "template" : "accident*",
+  "mappings" : {
+    "accident": {
+      "properties": {
+        "location": { "type": "geo_point" },
+        "involvedCount": { "type": "double" }
+      }        
+    }
+  }
+}
