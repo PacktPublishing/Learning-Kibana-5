@@ -1,0 +1,11 @@
+$warning=.es(index=cpu-anomaly-detection-results, timefield=timestamp).divide(.es(index=cpu-anomaly-detection-results, timefield=timestamp)).multiply(.es(index=metricbeat*, metric=max:system.process.cpu.total.pct).fit(mode=average).multiply(100)).points(radius=3, fill="10", fillColor="#2196F3").color(#2196F3).condition(operator=gt, 10).label(warning)
+
+$minor=.es(index=cpu-anomaly-detection-results, timefield=timestamp).divide(.es(index=cpu-anomaly-detection-results, timefield=timestamp)).multiply(.es(index=metricbeat*, metric=max:system.process.cpu.total.pct).fit(mode=average).multiply(100)).points(radius=3, fill="10", fillColor="#FFEB3B").color(#FFEB3B).condition(operator=lt, 10).condition(operator=gt, 50).label(minor)
+
+$major=.es(index=cpu-anomaly-detection-results, timefield=timestamp).divide(.es(index=cpu-anomaly-detection-results, timefield=timestamp)).multiply(.es(index=metricbeat*, metric=max:system.process.cpu.total.pct).fit(mode=average).multiply(100)).points(radius=3, fill="10", fillColor="#FF9800").color(#FF9800).condition(operator=lt, 50).condition(operator=gt, 70).label(major)
+
+$critical=.es(index=cpu-anomaly-detection-results, timefield=timestamp).divide(.es(index=cpu-anomaly-detection-results, timefield=timestamp)).multiply(.es(index=metricbeat*, metric=max:system.process.cpu.total.pct).fit(mode=average).multiply(100)).points(radius=3, fill="10", fillColor="#F44336").color(#F44336).condition(operator=lt, 70).label(critical)
+
+$maxCPU=.es(index=metricbeat*, metric=max:system.process.cpu.total.pct).color(#00C853).fit(mode=average).multiply(100).label("max cpu over time").bars(width=2)
+
+$maxCPU, $warning, $minor, $major, $critical
