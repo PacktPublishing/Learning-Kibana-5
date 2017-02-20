@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "Elastic-Stack-Apache-Logs",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Elastic Stack - Apache Logs",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":8,\"id\":\"BasicLogstash-Bandwidth-by-Country\",\"panelIndex\":1,\"row\":2,\"size_x\":5,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"BasicLogstash-Map\",\"panelIndex\":2,\"row\":8,\"size_x\":12,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"BasicLogstash-Metrics\",\"panelIndex\":3,\"row\":2,\"size_x\":2,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"BasicLogstash-Requests-by-Agent\",\"panelIndex\":4,\"row\":5,\"size_x\":4,\"size_y\":3,\"type\":\"visualization\"},{\"col\":3,\"id\":\"BasicLogstash-Response-Codes-over-Time\",\"panelIndex\":5,\"row\":2,\"size_x\":5,\"size_y\":3,\"type\":\"visualization\"},{\"col\":9,\"id\":\"BasicLogstash-Significant-Countries-by-Response-Code\",\"panelIndex\":6,\"row\":5,\"size_x\":4,\"size_y\":3,\"type\":\"visualization\"},{\"col\":5,\"id\":\"BasicLogstash-Top-Requested-Resources\",\"panelIndex\":7,\"row\":5,\"size_x\":4,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Basic-Elastic-Summary\",\"panelIndex\":8,\"row\":1,\"size_x\":12,\"size_y\":1,\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "2015-04-12T05:46:02.325Z",
+      "timeFrom": "2015-03-04T21:35:19.536Z",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  }
+]

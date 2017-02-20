@@ -1,0 +1,184 @@
+[
+  {
+    "_id": "BasicLogstash-Bandwidth-by-Country",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Bandwidth by Country",
+      "visState": "{\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"overlap\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"bytes\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"geoip.country_name.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-Response-Codes-over-Time",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Response Codes over Time",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"response\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-Significant-Countries-by-Response-Code",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Significant Countries by Response Code",
+      "visState": "{\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"response\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"type\":\"significant_terms\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.country_name.raw\",\"size\":3}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-Top-Requested-Resources",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Top Requested Resources",
+      "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"request.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-Requests-by-Agent",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Requests by Agent",
+      "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"agent.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Basic-ELK-Summary",
+    "_type": "visualization",
+    "_source": {
+      "title": "Basic ELK - Summary",
+      "visState": "{\"type\":\"markdown\",\"params\":{\"markdown\":\"Logging analytics is a very important use case, and this demo can be used to show how one can work interactively with the dashboard to analyse patterns and issues. The demo is based on the Apache access logs for the logstash.net website. The dashboard provides an overview of a months worth of traffic statistics for the logstash.net website. The period covered is 2014/12/21 to 2015/01/21. \\n      **If you need to reset the time period, [click here](/#/dashboard/ELK-Apache-Logs-ND?_g=%28time:%28from:'2014-12-21T17:33:29.911Z',mode:absolute,to:'2015-01-22T17:48:29.911Z'%29%29)**.\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Basic-Logstash-Summary",
+    "_type": "visualization",
+    "_source": {
+      "title": "Basic Logstash - Summary",
+      "visState": "{\"type\":\"markdown\",\"params\":{\"markdown\":\"Logging\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Basic-Elastic-Summary",
+    "_type": "visualization",
+    "_source": {
+      "title": "Basic Elastic Summary",
+      "visState": "{\"title\":\"Basic Elastic Summary\",\"type\":\"markdown\",\"params\":{\"markdown\":\"Logging analytics is a very important use case, and this demo can be used to show how one can work interactively with the dashboard to analyse patterns and issues. The demo is based on the Apache access logs for the logstash.net website that has been used during the ELK training workshops. The dashboard provides an overview of a months worth of traffic statistics for the logstash.net website. The period covered is 2014/12/21 to 2015/01/21. \\n      **If you need to reset the time period, [click here](/goto/bd4feaa95e4ce68c9e2990755f0f8374)**.\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-Metrics",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Metrics",
+      "visState": "{\"title\":\"BasicLogstash - Metrics\",\"type\":\"metric\",\"params\":{\"fontSize\":\"30\",\"handleNoResults\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"# Requests\"}},{\"id\":\"2\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"clientip.raw\",\"customLabel\":\"# Clients\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Basic-Logstash-US-vs-CA",
+    "_type": "visualization",
+    "_source": {
+      "title": "Basic Logstash - US vs CA",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"timelion\",\"params\":{\"expression\":\".es(index=\\\"basic-logstash-*\\\", q=\\\"US\\\").bars().label(\\\"Traffic from United States\\\"), .es(index=\\\"basic-logstash-*\\\", q=\\\"CA\\\").bars().label(\\\"Traffic from Canada\\\")\",\"interval\":\"1h\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-HeatMap",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - HeatMap",
+      "visState": "{\"title\":\"BasicLogstash - HeatMap\",\"type\":\"tile_map\",\"params\":{\"mapType\":\"Heatmap\",\"isDesaturated\":true,\"addTooltip\":true,\"heatMaxZoom\":16,\"heatMinOpacity\":\"0.42\",\"heatRadius\":\"23\",\"heatBlur\":15,\"heatNormalizeData\":true,\"wms\":{\"enabled\":false,\"url\":\"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer\",\"options\":{\"version\":\"1.3.0\",\"layers\":\"0\",\"format\":\"image/png\",\"transparent\":true,\"attribution\":\"Maps provided by USGS\",\"styles\":\"\"}}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.location\",\"autoPrecision\":true,\"mapZoom\":2,\"mapCenter\":[35.99578538642032,0],\"precision\":2}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Basic-Logstash-404-vs-404-mavg(5)",
+    "_type": "visualization",
+    "_source": {
+      "title": "Basic Logstash 404 vs 404 mavg(5)",
+      "visState": "{\"title\":\"Basic Logstash 404 vs 404 mavg(5)\",\"type\":\"timelion\",\"params\":{\"expression\":\".es(index=basic-logstash-*,metric=sum:bytes,q=response:404).divide(.es(index=basic-logstash-*,q=response:404)).label(\\\"bytes per 404 count\\\").color(lightgrey), .es(index=basic-logstash-*,metric=sum:bytes,q=response:404).divide(.es(index=basic-logstash-*,q=response:404)).label(\\\"bytes per 404 count\\\").movingaverage(5).lines(3).color(Orange), .static(2000).color(Red).lines(1)\",\"interval\":\"4h\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "BasicLogstash-Map",
+    "_type": "visualization",
+    "_source": {
+      "title": "BasicLogstash - Map",
+      "visState": "{\"title\":\"BasicLogstash - Map\",\"type\":\"tile_map\",\"params\":{\"mapType\":\"Scaled Circle Markers\",\"isDesaturated\":true,\"addTooltip\":true,\"heatMaxZoom\":16,\"heatMinOpacity\":0.1,\"heatRadius\":25,\"heatBlur\":15,\"heatNormalizeData\":true,\"wms\":{\"enabled\":true,\"url\":\"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer\",\"options\":{\"version\":\"1.3.0\",\"layers\":\"0\",\"format\":\"image/png\",\"transparent\":true,\"attribution\":\"Maps provided by USGS\",\"styles\":\"\"}}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.location\",\"autoPrecision\":true,\"precision\":2}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"basic-logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  }
+]
